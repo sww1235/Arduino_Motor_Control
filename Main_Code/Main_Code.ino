@@ -11,7 +11,7 @@ int tiltPin = 1;
 int panValue = 0;
 int tiltValue = 0;
 
-int panUpper = 0;
+int panUpper = 0; //lower and upper bounds on dead range in middle
 int panLower = 0;
 int tiltUpper = 0;
 int tiltLower = 0;
@@ -37,6 +37,18 @@ void loop() {
   
   panValue = analogRead(panPin);
   tiltValue = analogRead(tiltPin);
-  if 
+  if (panValue < panLower) //Pan motor control
+  {
+    
+    //panMotor->setSpeed(newSpeed)
+    panMotor->run(REVERSE);
+  }
+  else if (panValue> panUpper)
+  {
+    panMotor->run(FORWARD);
+  }
+  else
+  {panMotor->run(RELEASE);
+  }
 
 }

@@ -16,7 +16,7 @@ int panLower = 0;
 int tiltUpper = 0;
 int tiltLower = 0;
 
-int tiltMotorSpeed = 100; //speed default
+int tiltMotorSpeed = 100; //speed default (between 0 and 255)
 int panMotorSpeed = 100;  //speed default
 
 //create motorshield object
@@ -40,7 +40,7 @@ void loop() {
   if (panValue < panLower) //Pan motor control
   {
     
-    //panMotor->setSpeed(newSpeed)
+    //panMotor->setSpeed(newPanSpeed) //between 0 and 255
     panMotor->run(REVERSE);
   }
   else if (panValue> panUpper)
@@ -48,7 +48,23 @@ void loop() {
     panMotor->run(FORWARD);
   }
   else
-  {panMotor->run(RELEASE);
+  {
+    panMotor->run(RELEASE);
+  }
+  
+  if (tiltValue < tiltLower) //Tilt motor control
+  {
+    
+    //tiltMotor->setSpeed(newTiltSpeed) //between 0 and 255
+    ptiltMotor->run(REVERSE);
+  }
+  else if (tiltValue> tiltUpper)
+  {
+    tiltMotor->run(FORWARD);
+  }
+  else
+  {
+    tiltMotor->run(RELEASE);
   }
 
 }

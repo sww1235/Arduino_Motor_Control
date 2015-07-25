@@ -6,6 +6,12 @@
 //Tilt motor is connected to DC motor port M2 on shield
 //Pan potentiometer is connected to analog input 0
 //Tilt potentiometer is connected to analog input 1
+
+//potentiometers connected to analog pin 0 and analog pin 1.
+//Center pin of the potentiometer goes to the analog pin.
+//side pins of the potentiometer go to +5V and ground
+ 
+ 
 int panPin = 0;
 int tiltPin = 1;
 int panValue = 0;
@@ -66,5 +72,5 @@ void loop() {
   {
     tiltMotor->run(RELEASE);
   }
-
+delay(1); //delay for stability
 }

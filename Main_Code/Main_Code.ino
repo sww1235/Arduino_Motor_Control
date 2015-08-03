@@ -17,10 +17,10 @@ int tiltPin = 1;
 int panValue = 0;
 int tiltValue = 0;
 
-int panUpper = 0; //lower and upper bounds on dead range in middle
-int panLower = 0;
-int tiltUpper = 0;
-int tiltLower = 0;
+int panUpper = 520; //lower and upper bounds on dead range in middle.
+int panLower = 505; //analog values range from 0-1024 so middle is 512.
+int tiltUpper = 520; //I have included estimated bounds, but you may need to edit these.
+int tiltLower = 505;
 
 int tiltMotorSpeed = 100; //speed default (between 0 and 255)
 int panMotorSpeed = 100;  //speed default

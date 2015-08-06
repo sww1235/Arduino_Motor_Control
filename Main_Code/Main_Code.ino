@@ -37,7 +37,8 @@ Adafruit_DCMotor *tiltMotor = AFMS.getMotor(2);
 void setup() {
   // put your setup code here, to run once:
   AFMS.begin();
-  panMotor->setSpeed(panMotorSpeed)
+  panMotor->setSpeed(panMotorSpeed);
+  tiltMotor->setSpeed(tiltMotorSpeed);
 
 }
 
@@ -47,14 +48,14 @@ void loop() {
   tiltValue = analogRead(tiltPin);
   if (panValue < panLower) //Pan motor control
   {
-    newPanSpeed = map(panValue, 0, panLower, panSpeedMax, 0); //when panValue==0 want speed to be panSpeedMax
-    panMotor->setSpeed(newPanSpeed) //between 0 and 255
-    panMotor->run(REVERSE);
+    int newPanSpeed = map(panValue, 0, panLower, panSpeedMax, 0); //when panValue==0 want speed to be panSpeedMax
+    panMotor->setSpeed(newPanSpeed); //between 0 and 255
+    panMotor->run(BACKWARD);
   }
   else if (panValue> panUpper)
   {
-    newPanSpeed = map(panValue, 1024, panUpper, panSpeedMax, 0); //when panValue==1024 want speed to be panSpeedMax
-    panMotor->setSpeed(newPanSpeed) //between 0 and 255
+    int newPanSpeed = map(panValue, 1024, panUpper, panSpeedMax, 0); //when panValue==1024 want speed to be panSpeedMax
+    panMotor->setSpeed(newPanSpeed); //between 0 and 255
     panMotor->run(FORWARD);
   }
   else
@@ -64,14 +65,14 @@ void loop() {
   
   if (tiltValue < tiltLower) //Tilt motor control
   {
-    newTiltSpeed = map(tiltValue, 0, tiltLower, tiltSpeedMax, 0); //when panValue==0 want speed to be panSpeedMax
-    tiltMotor->setSpeed(newTiltSpeed) //between 0 and 255
-    tiltMotor->run(REVERSE);
+    int newTiltSpeed = map(tiltValue, 0, tiltLower, tiltSpeedMax, 0); //when panValue==0 want speed to be panSpeedMax
+    tiltMotor->setSpeed(newTiltSpeed); //between 0 and 255
+    tiltMotor->run(BACKWARD);
   }
   else if (tiltValue> tiltUpper)
   {
-    newTiltSpeed = map(tiltValue, 1024, tiltUpper, tiltSpeedMax, 0); //when panValue==1024 want speed to be panSpeedMax
-    tiltMotor->setSpeed(newTiltSpeed) //between 0 and 255
+    int newTiltSpeed = map(tiltValue, 1024, tiltUpper, tiltSpeedMax, 0); //when panValue==1024 want speed to be panSpeedMax
+    tiltMotor->setSpeed(newTiltSpeed); //between 0 and 255
     tiltMotor->run(FORWARD);
   }
   else

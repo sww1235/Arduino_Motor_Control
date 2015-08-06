@@ -24,8 +24,8 @@ int tiltLower = 505;
 
 int tiltMotorSpeed = 0; //speed default (between 0 and 255)
 int panMotorSpeed = 0;  //speed default
-int tiltSpeedMax = 0; //max tilt speed (between 0 and 255)
-int panSpeedMax = 0; //max pan speed (between 0 and 255)
+int tiltSpeedMax = 255; //max tilt speed (between 0 and 255)
+int panSpeedMax = 255; //max pan speed (between 0 and 255)
 
 //create motorshield object
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();

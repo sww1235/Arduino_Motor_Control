@@ -48,6 +48,7 @@ void loop() {
   tiltValue = analogRead(tiltPin);
   if (panValue < panLower) //Pan motor control
   {
+    //the map function maps one range of numbers on to another.
     int newPanSpeed = map(panValue, 0, panLower, panSpeedMax, 0); //when panValue==0 want speed to be panSpeedMax
     panMotor->setSpeed(newPanSpeed); //between 0 and 255
     panMotor->run(BACKWARD);
@@ -65,13 +66,13 @@ void loop() {
   
   if (tiltValue < tiltLower) //Tilt motor control
   {
-    int newTiltSpeed = map(tiltValue, 0, tiltLower, tiltSpeedMax, 0); //when panValue==0 want speed to be panSpeedMax
+    int newTiltSpeed = map(tiltValue, 0, tiltLower, tiltSpeedMax, 0); //when tiltValue==0 want speed to be tiltSpeedMax
     tiltMotor->setSpeed(newTiltSpeed); //between 0 and 255
     tiltMotor->run(BACKWARD);
   }
   else if (tiltValue> tiltUpper)
   {
-    int newTiltSpeed = map(tiltValue, 1024, tiltUpper, tiltSpeedMax, 0); //when panValue==1024 want speed to be panSpeedMax
+    int newTiltSpeed = map(tiltValue, 1024, tiltUpper, tiltSpeedMax, 0); //when tiltValue==1024 want speed to be tiltSpeedMax
     tiltMotor->setSpeed(newTiltSpeed); //between 0 and 255
     tiltMotor->run(FORWARD);
   }
